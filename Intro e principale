@@ -1,0 +1,22 @@
+extends Node2D
+
+var window_asset = preload("res://mater_yay.tscn")
+var looking_glass: Window
+var board: RevealableTerrain
+@onready var intro = $Intro/Intro
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	intro.play("Intro")
+	self.get_viewport().set_embedding_subwindows(false)
+	get_viewport().always_on_top = true
+	get_viewport().get_window().title = "National Mater Geographic --(V.0.1)--"
+	var new_window: Window = window_asset.instantiate()
+	#self.add_child(new_window)
+	looking_glass = new_window
+	#board = get_node("TileMap") as RevealableTerrain
+	
+	new_window.position = Vector2(0, -500)
+	new_window.visible = true
+	new_window.title = "National Mater Geographic (virtuale)"
+	new_window.size = Vector2(1300, 1600)
